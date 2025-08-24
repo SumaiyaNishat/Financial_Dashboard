@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Personal Finance Dashboard</title>
+  <link rel="stylesheet" href="./styles/style.css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+  <div class="app">
+    <header>
+      <h1>Personal Finance Dashboard</h1>
+      <label><input type="checkbox" id="themeToggle"> Dark Mode</label>
+    </header>
+
+    <section class="kpis">
+      <div>Income: <span id="kpiIncome">$0.00</span></div>
+      <div>Expense: <span id="kpiExpense">$0.00</span></div>
+      <div>Balance: <span id="kpiBalance">$0.00</span></div>
+    </section>
+
+    <section class="controls">
+      <input type="month" id="monthFilter">
+      <input type="text" id="searchInput" placeholder="Search...">
+      <button id="addBtn">Add Transaction</button>
+      <button id="exportBtn">Export CSV</button>
+      <button id="clearBtn">Clear All</button>
+    </section>
+
+    <table>
+      <thead>
+        <tr>
+          <th>Date</th>
+          <th>Type</th>
+          <th>Category</th>
+          <th>Note</th>
+          <th>Amount</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody id="tbody"></tbody>
+    </table>
+
+    <canvas id="pieCanvas" style="max-width:625px;margin-top:24px;"></canvas>
+
+    <dialog id="txnModal">
+      <form id="txnForm">
+        <h2 id="modalTitle">Add Transaction</h2>
+        <label>Type: <select id="type"><option value="income">Income</option><option value="expense">Expense</option></select></label>
+        <label>Category: <input type="text" id="category" required></label>
+        <label>Amount: <input type="number" id="amount" required></label>
+        <label>Date: <input type="date" id="date" required></label>
+        <label>Note: <input type="text" id="note"></label>
+        <div class="modal-actions">
+          <button type="submit">Save</button>
+          <button type="button" id="closeModal">Cancel</button>
+        </div>
+      </form>
+    </dialog>
+  </div>
+  <script src="script.js"></script>
+</body>
+</html>
